@@ -1,1 +1,542 @@
-<!DOCTYPE html><html><head><meta name="robots" content="noindex,nofollow"><title>CAIVO</title></head><body><p>Building.</p></body></html>
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Anatomy of an Authi Jarvis &middot; CAIVO</title>
+<style>
+
+  :root{
+    --ink:#1d1d1f;--ink2:#3a3a3c;--muted:#6e6e73;--soft:#8e8e93;--faint:#aeaeb2;
+    --bg:#f5f5f7;--card:#ffffff;--line:#e3e3e8;--line2:#ececf0;
+    --brand:#5b53d6;--brandDark:#4338CA;--brandSoft:#eceafb;
+    --coral:#C8552E;--coralBg:#FBF0EA;
+    --purple:#5b53c9;--purpleBg:#EFEEFB;
+    --teal:#1a7a60;--tealBg:#E6F4EE;
+    --blue:#2f74c0;--blueBg:#EAF2FB;
+    --amber:#B0770F;--amberBg:#FBF3E4;
+    --grey:#6b6a66;--greyBg:#F1F0EC;
+    --green:#22936a;--greenBg:#E7F5EE;
+    --conn:#d0d0d8;
+    --ease:cubic-bezier(.32,.72,0,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.5;font-size:15px;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;}
+  .wrap{max-width:1000px;margin:0 auto;padding:40px 24px 100px;}
+
+  .eyebrow{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--brand);font-weight:600;margin:0 0 10px;}
+  h1{font-size:34px;line-height:1.08;font-weight:680;margin:0 0 12px;letter-spacing:-.03em;}
+  .lede{font-size:16px;color:var(--muted);margin:0 0 14px;max-width:680px;font-weight:430;line-height:1.55;}
+  .hint{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft);font-weight:500;
+    background:var(--card);border:1px solid var(--line);border-radius:980px;padding:6px 14px;margin-right:8px;}
+  .hint .pd{width:7px;height:7px;border-radius:50%;background:var(--brand);display:inline-block;
+    animation:pulse 2.4s var(--ease) infinite;}
+  @keyframes pulse{0%,100%{opacity:.35;transform:scale(.8);}50%{opacity:1;transform:scale(1.1);}}
+  .legend{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft);font-weight:500;
+    background:var(--card);border:1px solid var(--line);border-radius:980px;padding:6px 14px;margin-top:8px;}
+  .legend .sw{display:inline-block;width:26px;height:15px;border-radius:980px;border:1px solid var(--line);background:#f6f6f8;}
+  .legend .sw.dash{border:1px dashed #d8d4f2;background:var(--brandSoft);}
+
+
+  .note{font-size:12px;color:var(--soft);margin:12px 0 0;max-width:660px;line-height:1.5;font-weight:450;}
+
+  .stack{display:flex;flex-direction:column;align-items:center;margin-top:34px;}
+
+  .conn{width:2px;height:26px;background:linear-gradient(var(--conn),var(--conn));margin:0 auto;position:relative;}
+  .conn.tall{height:34px;}
+  .clabel{font-size:10.5px;color:var(--soft);font-weight:560;background:var(--bg);
+    padding:2px 12px;letter-spacing:.02em;position:relative;z-index:2;margin:-2px 0;
+    border:1px solid var(--line);border-radius:980px;}
+  .cwrap{display:flex;flex-direction:column;align-items:center;}
+
+  .llab{font-size:11px;font-weight:640;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 0 10px;text-align:center;}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px -16px rgba(0,0,0,.12);
+    transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .18s;}
+  .clk{cursor:pointer;position:relative;}
+  .clk:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(0,0,0,.05),0 18px 40px -22px rgba(0,0,0,.22);border-color:#d6d6dc;}
+  .clk::after{content:"+";position:absolute;top:11px;right:13px;width:19px;height:19px;border-radius:50%;
+    background:#f0f0f4;color:var(--soft);font-size:14px;font-weight:500;line-height:19px;text-align:center;
+    transition:background .18s,color .18s;}
+  .clk:hover::after{background:var(--brand);color:#fff;}
+
+  .full{width:100%;}
+
+  .seats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .seat{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:13px 14px 12px;min-width:104px;text-align:center;
+    box-shadow:0 1px 2px rgba(0,0,0,.04);transition:transform .2s var(--ease),box-shadow .2s var(--ease);cursor:pointer;}
+  .seat:hover{transform:translateY(-2px);box-shadow:0 14px 30px -20px rgba(0,0,0,.28);}
+  .seat .av{width:30px;height:30px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;
+    font-size:12.5px;font-weight:640;color:#fff;background:linear-gradient(180deg,#6b62e0,#5249cf);letter-spacing:-.02em;}
+  .seat b{font-size:13.5px;font-weight:600;display:block;letter-spacing:-.02em;}
+  .seat small{font-size:10.5px;color:var(--soft);}
+  .seat.add{border-style:dashed;border-color:#d2d2d8;background:transparent;box-shadow:none;}
+  .seat.add .av{background:#eceaf7;color:var(--brand);}
+  .seat.add b{color:var(--faint);}
+  .seat.tier .av{background:linear-gradient(180deg,#4fae8d,#1a7a60);}
+
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;}
+  @media(max-width:640px){.duo{grid-template-columns:1fr;}}
+  .ihd{display:flex;align-items:center;gap:10px;padding:15px 17px 6px;}
+  .ico{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;}
+  .ico svg{width:15px;height:15px;}
+  .ttl{font-size:15px;font-weight:620;letter-spacing:-.02em;}
+  .sub{font-size:11.5px;color:var(--soft);font-weight:500;margin-top:1px;}
+  .body{padding:2px 17px 16px;font-size:12.5px;color:var(--ink2);line-height:1.5;}
+  .chips{display:flex;flex-wrap:wrap;gap:5px;padding:0 17px 16px;}
+  .chip{font-size:11px;font-weight:520;color:var(--ink2);background:#f6f6f8;border:1px solid var(--line);border-radius:980px;padding:3px 10px;letter-spacing:-.01em;}
+  .chip.dash{border-style:dashed;color:var(--brand);background:var(--brandSoft);border-color:#d8d4f2;}
+
+  .brain{width:100%;max-width:560px;border-radius:22px;border:1px solid var(--brandDark);
+    background:linear-gradient(180deg,#6b62e0,#5249cf);color:#fff;padding:20px 26px;cursor:pointer;position:relative;
+    box-shadow:0 1px 2px rgba(67,56,202,.3),0 24px 50px -26px rgba(67,56,202,.75);
+    transition:transform .22s var(--ease),box-shadow .22s var(--ease);}
+  .brain:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(67,56,202,.3),0 32px 62px -28px rgba(67,56,202,.9);}
+  .brain .bt{display:flex;align-items:center;gap:13px;}
+  .brain .bicon{width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;flex:none;}
+  .brain .bicon svg{width:21px;height:21px;}
+  .brain .nm{font-size:20px;font-weight:680;letter-spacing:-.025em;}
+  .brain .tl{font-size:12px;color:#dcdaf9;margin-top:1px;font-weight:450;}
+  .brain .swap{margin-left:auto;font-size:10.5px;font-weight:600;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.25);border-radius:980px;padding:5px 12px;color:#fff;letter-spacing:.01em;white-space:nowrap;}
+  .brain .bnote{font-size:12px;color:#e7e6fb;margin:12px 0 0;line-height:1.5;}
+
+  .trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;width:100%;}
+  @media(max-width:760px){.trio{grid-template-columns:1fr;}}
+  .rlist{padding:2px 15px 15px;display:flex;flex-direction:column;gap:6px;}
+  .rrow{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--ink2);}
+  .rrow .tm{font-size:10px;font-weight:600;color:var(--blue);background:var(--blueBg);border-radius:6px;padding:2px 6px;flex:none;min-width:52px;text-align:center;letter-spacing:-.01em;}
+  .rrow .tm.dash{color:var(--brand);background:var(--brandSoft);}
+
+  .bewrap{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden;}
+  @media(max-width:640px){.bewrap{grid-template-columns:1fr;}}
+  .behalf{padding:16px 18px;}
+  .behalf+.behalf{border-left:1px solid var(--line);}
+  @media(max-width:640px){.behalf+.behalf{border-left:none;border-top:1px solid var(--line);}}
+  .beh{font-size:12.5px;font-weight:640;letter-spacing:-.01em;margin:0 0 9px;display:flex;align-items:center;gap:8px;}
+  .beh .dot{width:7px;height:7px;border-radius:50%;background:var(--grey);}
+  .beh .dot.new{background:var(--brand);}
+  .drow{display:flex;gap:9px;align-items:baseline;padding:5px 0;font-size:12px;border-bottom:1px solid var(--line2);}
+  .drow:last-child{border-bottom:none;}
+  .drow b{font-size:12px;font-weight:620;letter-spacing:-.01em;flex:none;min-width:92px;}
+  .drow span{color:var(--soft);line-height:1.4;}
+  .drow.new b{color:var(--brand);}
+  .dlink{border-top:1px solid var(--line);padding:14px 18px 16px;font-size:12px;color:var(--ink2);line-height:1.55;background:linear-gradient(180deg,#fbfbfd,#f7f7fa);border-radius:0 0 18px 18px;}
+  .dlink b{font-weight:640;}
+
+  .flow{width:100%;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px -18px rgba(0,0,0,.1);}
+  .flow h3{font-size:13px;font-weight:640;margin:0 0 3px;letter-spacing:-.01em;}
+  .flow p.sub{margin:0 0 15px;}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;}
+  @media(max-width:760px){.steps{grid-template-columns:1fr 1fr;gap:14px 10px;}}
+  .step{position:relative;padding:0 12px;text-align:center;}
+  .step:not(:last-child)::after{content:"";position:absolute;top:15px;right:-6px;width:12px;height:12px;
+    border-top:2px solid var(--conn);border-right:2px solid var(--conn);transform:rotate(45deg);}
+  @media(max-width:760px){.step::after{display:none;}}
+  .step .n{width:30px;height:30px;border-radius:50%;background:var(--brandSoft);color:var(--brand);
+    font-size:13px;font-weight:680;display:flex;align-items:center;justify-content:center;margin:0 auto 9px;}
+  .step .st{font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.3;}
+  .step .sd{font-size:10.5px;color:var(--soft);margin-top:3px;line-height:1.35;}
+
+  .found{width:100%;margin-top:6px;background:linear-gradient(180deg,#fafafb,#f3f3f5);border:1px solid var(--line);
+    border-radius:22px;padding:22px;}
+  .found .fh{text-align:center;margin:0 0 18px;}
+  .found .fh .llab{margin-bottom:5px;}
+  .found .fh b{font-size:17px;font-weight:660;letter-spacing:-.02em;}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+  @media(max-width:820px){.fgrid{grid-template-columns:1fr;}}
+  .fpanel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 16px;box-shadow:0 1px 2px rgba(0,0,0,.03);}
+  .fpanel .ph{font-size:12.5px;font-weight:640;letter-spacing:-.01em;margin:0 0 11px;display:flex;align-items:center;gap:8px;}
+  .fpanel .ph .ico{width:22px;height:22px;border-radius:7px;}
+  .fpanel .ph .ico svg{width:13px;height:13px;}
+  .mlist{display:flex;flex-direction:column;gap:2px;}
+  .mrow{display:flex;align-items:flex-start;gap:9px;padding:7px 8px;border-radius:10px;cursor:pointer;transition:background .15s;}
+  .mrow:hover{background:#f6f6f9;}
+  .mrow .mk{width:6px;height:6px;border-radius:50%;margin-top:6px;flex:none;}
+  .mrow .mt b{font-size:12px;font-weight:600;letter-spacing:-.01em;display:block;}
+  .mrow .mt small{font-size:11px;color:var(--soft);line-height:1.35;display:block;margin-top:1px;}
+  .mrow .plus{margin-left:auto;color:var(--faint);font-size:14px;flex:none;padding-left:4px;}
+
+  .lsteps{display:flex;flex-direction:column;gap:9px;}
+  .lstep{display:flex;gap:11px;align-items:flex-start;}
+  .lstep .ln{width:20px;height:20px;border-radius:50%;background:var(--tealBg);color:var(--teal);font-size:11px;font-weight:680;
+    display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px;}
+  .lstep .lt b{font-size:12px;font-weight:600;display:block;letter-spacing:-.01em;}
+  .lstep .lt small{font-size:11px;color:var(--soft);line-height:1.35;}
+  .repo-note{font-size:11.5px;color:var(--ink2);line-height:1.55;}
+  .repo-note code{font-size:11px;background:#f0f0f3;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0;}
+
+  .foot{text-align:center;margin-top:30px;font-size:12px;color:var(--soft);}
+  .foot b{color:var(--green);font-weight:600;}
+  .foot .sep{color:var(--faint);margin:0 8px;}
+
+  .scrim{position:fixed;inset:0;background:rgba(20,20,25,.28);backdrop-filter:blur(3px);opacity:0;pointer-events:none;
+    transition:opacity .3s var(--ease);z-index:40;}
+  .scrim.on{opacity:1;pointer-events:auto;}
+  .sheet{position:fixed;top:0;right:0;height:100%;width:400px;max-width:92vw;background:var(--card);z-index:50;
+    box-shadow:-24px 0 60px -30px rgba(0,0,0,.4);transform:translateX(100%);transition:transform .34s var(--ease);
+    display:flex;flex-direction:column;}
+  .sheet.on{transform:translateX(0);}
+  .sheet .sx{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
+    background:var(--card);color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.16s;}
+  .sheet .sx:hover{background:#f2f2f5;color:var(--ink);}
+  .sheet .sinner{padding:34px 26px 40px;overflow-y:auto;}
+  .sheet .stag{font-size:11px;font-weight:640;letter-spacing:.07em;text-transform:uppercase;margin:0 0 8px;}
+  .sheet h2{font-size:22px;font-weight:680;letter-spacing:-.03em;margin:0 0 18px;line-height:1.12;}
+  .sblock{margin:0 0 20px;}
+  .sblock .sl{font-size:11px;font-weight:640;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);margin:0 0 6px;}
+  .sblock p{font-size:13.5px;color:var(--ink2);line-height:1.55;margin:0;}
+  @media(max-width:640px){
+    .sheet{width:100%;max-width:100%;top:auto;bottom:0;height:82vh;border-radius:22px 22px 0 0;transform:translateY(100%);}
+    .sheet.on{transform:translateY(0);}
+  }
+
+  @media print{
+    .hint,.legend,.scrim,.sheet,.clk::after{display:none !important;}
+    body{background:#fff;}
+    .card,.brain,.flow,.found,.fpanel,.seat{box-shadow:none !important;}
+    .stack{margin-top:20px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">CAIVO &times; Authi &middot; Three rooms, four cities, one brain</p>
+  <h1>Anatomy of an Authi Jarvis.</h1>
+  <p class="lede">Authi sells into three different rooms. Brands running Connect on their own terminals. Advertisers buying moments across the Crowd network. And the merchants who host that network in the first place. Three different pitches, three different sets of objections, four cities, carried by a small team. This is what it looks like when one brain holds all of it. The solid pieces are the out-the-box system already running for three teams today; the dashed pieces are what we would add for Authi. Your stack stays where it is: the brain wires into HubSpot rather than replacing it, so nobody migrates anything.</p>
+  <span class="hint"><span class="pd"></span> Click any block to see what it does and how it can be changed</span>
+  <span class="legend"><span class="sw"></span> Out of the box <span class="sw dash" style="margin-left:10px"></span> Added for Authi</span>
+  <p class="note">Built from Authi's own published material and one conversation with Olly. Where we have assumed how you sell rather than read it, the block says so. Correct it and the map changes.</p>
+
+  <div class="stack">
+
+    <!-- SEATS -->
+    <p class="llab">The team</p>
+    <div class="seats full">
+      <div class="seat clk" data-key="seats"><div class="av">S</div><b>Stephen</b><small>CEO</small></div>
+      <div class="seat clk" data-key="seats"><div class="av">O</div><b>Olly</b><small>New business</small></div>
+      <div class="seat clk" data-key="seats"><div class="av">D</div><b>Dean</b><small>Growth</small></div>
+      <div class="seat clk" data-key="seats"><div class="av">T</div><b>Tom</b><small>Sydney</small></div>
+      <div class="seat clk" data-key="seats"><div class="av">DF</div><b>Dirk</b><small>Melbourne</small></div>
+      <div class="seat clk" data-key="seats"><div class="av">M</div><b>Milton</b><small>Operations</small></div>
+      <div class="seat tier clk" data-key="cto"><div class="av">TV</div><b>Tane</b><small>CTO</small></div>
+      <div class="seat add clk" data-key="newyork"><div class="av">NY</div><b>New York</b><small>September</small></div>
+    </div>
+
+    <p class="note" style="text-align:center;margin:14px auto 0;max-width:640px"><i>Assumption worth correcting: Olly describes the working team as about four people, mostly selling, plus one technical person. Your team page names more. We have drawn a seat for everyone who is selling or running the business day to day, and left the rest easy to add.</i></p>
+
+    <div class="cwrap"><div class="conn"></div><span class="clabel">every seat, one brain, three time zones</span><div class="conn"></div></div>
+
+    <!-- INSTRUCTIONS -->
+    <p class="llab">The rulebook</p>
+    <div class="duo">
+      <div class="card clk" data-key="org">
+        <div class="ihd">
+          <span class="ico" style="background:var(--brandSoft);color:var(--brand)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg>
+          </span>
+          <div><div class="ttl">Org instructions</div><div class="sub">Shared across everyone</div></div>
+        </div>
+        <div class="body">The Authi rulebook. Identity, tone of voice, safety rules, and the standard way of working. Written once with you, applied to every seat. This is where the three pitches live, so a Crowd advertiser in Melbourne hears the same story as one in Auckland, and nobody accidentally runs the merchant pitch at a brand.</div>
+        <div class="chips"><span class="chip">Voice</span><span class="chip">Safety</span><span class="chip">Log everything</span><span class="chip">No duplicates</span><span class="chip dash">Connect pitch</span><span class="chip dash">Crowd pitch</span><span class="chip dash">Merchant pitch</span><span class="chip dash">Note standard</span></div>
+      </div>
+      <div class="card clk" data-key="personal">
+        <div class="ihd">
+          <span class="ico" style="background:var(--purpleBg);color:var(--purple)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+          </span>
+          <div><div class="ttl">Personal instructions</div><div class="sub">Per person, on top</div></div>
+        </div>
+        <div class="body">A thin personal layer. Olly's seat is shaped around new business and first meetings, Tom's and Dirk's around their own city and account list, Milton's around getting signed merchants actually live, Stephen's around the whole picture rather than one patch. Same brain, different lens per job.</div>
+        <div class="chips"><span class="chip">Role</span><span class="chip">Their inbox</span><span class="chip">Their voice</span><span class="chip dash">Their territory</span><span class="chip dash">Their targets</span></div>
+      </div>
+    </div>
+
+    <div class="cwrap"><div class="conn"></div><span class="clabel">shapes how the brain behaves</span><div class="conn"></div></div>
+
+    <!-- BRAIN -->
+    <p class="llab">The brain</p>
+    <div class="brain clk" data-key="brain">
+      <div class="bt">
+        <span class="bicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a4 4 0 0 0-4 4 3.5 3.5 0 0 0-1 6.9V17a3 3 0 0 0 6 0M12 3a4 4 0 0 1 4 4 3.5 3.5 0 0 1 1 6.9V17a3 3 0 0 1-6 0"/></svg></span>
+        <div><div class="nm">Claude</div><div class="tl">Reads the rules, picks the right skill, does the work</div></div>
+        <span class="swap">&#8644; Swappable</span>
+      </div>
+      <p class="bnote">The intelligence sits behind a model seam. Because the skills, routines, data and connectors are all separate from the model, the brain can be swapped for another AI without rebuilding the machine. The same is true one layer down: HubSpot, Notion and every connector sit behind their own seam, so a tool can be changed without touching the rest. The model is a part you can swap, not the whole machine, and you are never locked to one vendor.</p>
+    </div>
+
+    <div class="cwrap"><div class="conn"></div><span class="clabel">the brain draws on three things</span><div class="conn"></div></div>
+
+    <!-- CAPABILITY TRIO -->
+    <p class="llab">What it knows, does, and can reach</p>
+    <div class="trio">
+      <!-- SKILLS -->
+      <div class="card clk" data-key="skills">
+        <div class="ihd">
+          <span class="ico" style="background:var(--tealBg);color:var(--teal)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          </span>
+          <div><div class="ttl">Skills</div><div class="sub">What it knows how to do</div></div>
+        </div>
+        <div class="body">Modular packs that switch on automatically when relevant. The solid ones ship on day one. Where a standard pack overlaps a tool Authi already runs, it is remapped rather than duplicated: our CRM skill points at HubSpot instead of building a second one.</div>
+        <div class="chips">
+          <span class="chip">Email</span><span class="chip">Meetings</span><span class="chip">Tasks</span><span class="chip">Documents</span><span class="chip">Reporting</span><span class="chip">Proposals</span>
+          <span class="chip dash">CRM &#8594; HubSpot</span><span class="chip dash">Objection capture</span><span class="chip dash">Merchant qualifying</span><span class="chip dash">Signed to live</span><span class="chip dash">Campaign log</span><span class="chip dash">City brief</span><span class="chip dash">Ask the business anything</span>
+        </div>
+      </div>
+      <!-- ROUTINES -->
+      <div class="card clk" data-key="routines">
+        <div class="ihd">
+          <span class="ico" style="background:var(--blueBg);color:var(--blue)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </span>
+          <div><div class="ttl">Routines</div><div class="sub">What it does on its own</div></div>
+        </div>
+        <div class="rlist">
+          <div class="rrow"><span class="tm">7:00am</span> Daily brief, in each person's local time</div>
+          <div class="rrow"><span class="tm">Hourly</span> Inbox triage, filed and drafted</div>
+          <div class="rrow"><span class="tm">On rec</span> Meeting &#8594; filed to the account and the deal</div>
+          <div class="rrow"><span class="tm">3&#215;/day</span> Deals gone quiet, draft the chase</div>
+          <div class="rrow"><span class="tm">Mon</span> Weekly pipeline, whole team in one email</div>
+          <div class="rrow"><span class="tm dash">Weekly</span> Objection roll-up, split by room</div>
+          <div class="rrow"><span class="tm dash">Daily</span> Signed but not live, if that gap exists</div>
+          <div class="rrow"><span class="tm dash">Campaign end</span> Wash-up filed to the advertiser</div>
+          <div class="rrow"><span class="tm dash">Weekly</span> Verifone referrals with no first meeting yet</div>
+        </div>
+      </div>
+      <!-- CONNECTORS -->
+      <div class="card clk" data-key="connectors">
+        <div class="ihd">
+          <span class="ico" style="background:var(--amberBg);color:var(--amber)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h8M6 8a4 4 0 0 0 0 8M18 8a4 4 0 0 1 0 8"/></svg>
+          </span>
+          <div><div class="ttl">Connectors</div><div class="sub">What it can reach</div></div>
+        </div>
+        <div class="body">Wires into the tools Authi already uses. Each person connects their own with their own login, so access follows the person and nobody sees more than they should. Nothing migrates; the brain reads and writes in place. One new tool is involved, Notion, which is where the brain layer below lives. Your team never has to open it.</div>
+        <div class="chips">
+          <span class="chip">Gmail</span><span class="chip">Calendar</span><span class="chip">Drive</span><span class="chip">Plaud</span><span class="chip dash">Notion</span>
+          <span class="chip dash">HubSpot</span><span class="chip dash">The Authi portal &middot; read only</span><span class="chip dash">Your tool</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cwrap"><div class="conn tall"></div><span class="clabel">everything reads and writes to one place</span><div class="conn tall"></div></div>
+
+    <!-- DATA STRUCTURE -->
+    <p class="llab">The data structure</p>
+    <div class="card clk full" data-key="backend">
+      <div class="ihd" style="padding-bottom:12px">
+        <span class="ico" style="background:var(--greyBg);color:var(--grey)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+        </span>
+        <div><div class="ttl">HubSpot stays the CRM. The brain adds the bit HubSpot has no home for</div><div class="sub">Every record has exactly one home. Nothing is copied, so nothing can drift</div></div>
+      </div>
+      <div class="bewrap">
+        <div class="behalf">
+          <p class="beh"><span class="dot"></span> Systems of record &middot; your stack, stays</p>
+          <div class="drow"><b>HubSpot</b><span>contacts, companies, deals, pipeline, sequences and tracked email. The CRM stays the CRM, and a deal stage is only ever changed here</span></div>
+          <div class="drow"><b>The Authi portal</b><span>campaigns, interactions and results. Read only, and it stays the system of record for anything that gets billed</span></div>
+          <div class="drow"><b>Gmail + Calendar</b><span>comms and diary: read everything, draft only</span></div>
+          <div class="drow"><b>Drive</b><span>creative, agreements and decks, one naming standard</span></div>
+        </div>
+        <div class="behalf">
+          <p class="beh"><span class="dot new"></span> The brain layer &middot; new, in Notion</p>
+          <div class="drow new"><b>Accounts</b><span>one page per Connect brand, Crowd advertiser or network merchant, carrying which of the three they are and everything the team knows about them</span></div>
+          <div class="drow new"><b>Terminals + go-live</b><span>sites, models, monthly transactions against the eligibility bar, signed date, load date, live date, and which agreement version they are on</span></div>
+          <div class="drow new"><b>Campaign log</b><span>every campaign, its goal, where it ran, what came back, and the wash-up, so the next pitch cites the last result</span></div>
+          <div class="drow new"><b>Channel + referrals</b><span>every referral that comes in through Verifone or EFTPOS NZ, who sent it, and what happened to it, because a channel lead that goes quiet is nobody's job by default</span></div>
+          <div class="drow new"><b>Interactions</b><span>every meeting, call and key thread, filed to the account and the HubSpot deal</span></div>
+          <div class="drow new"><b>Objection library</b><span>every objection heard, which room it came from, and the answer that actually worked</span></div>
+          <div class="drow new"><b>The playbook</b><span>the Connect, Crowd and merchant pitches, their NZ, AU and US variants, and the standards every seat writes to</span></div>
+        </div>
+      </div>
+      <div class="dlink"><b>How it links:</b> HubSpot holds the deal, the brain layer holds the story. Every record in Notion carries the HubSpot ID of the company or deal it belongs to, so the two can never disagree about who is who, and one merchant who is also a Connect customer stays one company with two threads rather than two half-records. When the brain needs to change a deal it writes straight into HubSpot over its own supported connection, in your name and with your permissions, rather than editing a copy and syncing later. Nothing is stored twice, so there is never a second CRM to keep in step, and never a question of which version is true.</div>
+    </div>
+
+    <div class="cwrap"><div class="conn tall"></div></div>
+
+    <!-- FLOW STEPPER -->
+    <div class="flow full">
+      <h3>How a single moment moves through it</h3>
+      <p class="sub">Olly walks out of a first meeting with a merchant. It is all filed and drafted before he reaches the car.</p>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div class="st">Something happens</div><div class="sd">The meeting is recorded, or an advertiser replies to a thread.</div></div>
+        <div class="step"><div class="n">2</div><div class="st">A routine catches it</div><div class="sd">Within minutes it is filed to the right account and the right HubSpot deal.</div></div>
+        <div class="step"><div class="n">3</div><div class="st">The brain reads it</div><div class="sd">Pulls out what was agreed, what was pushed back on, and what happens next.</div></div>
+        <div class="step"><div class="n">4</div><div class="st">HubSpot updates</div><div class="sd">Tasks appear, the stage change waits for Olly to confirm, and the objection files itself either way.</div></div>
+        <div class="step"><div class="n">5</div><div class="st">Olly gets the last click</div><div class="sd">The follow-up is drafted in his voice. Nothing goes out without a human.</div></div>
+      </div>
+    </div>
+
+    <div class="cwrap"><div class="conn tall"></div></div>
+
+    <!-- FOUNDATIONS -->
+    <div class="found full">
+      <div class="fh">
+        <p class="llab">The foundations</p>
+        <b>How it is wired, where it lives, and how we would build it</b>
+      </div>
+      <div class="fgrid">
+
+        <div class="fpanel">
+          <p class="ph"><span class="ico" style="background:var(--coralBg);color:var(--coral);display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+          </span> How it is wired</p>
+          <div class="mlist">
+            <div class="mrow" data-key="draft"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Draft, do not send</b><small>Anything a merchant or brand sees stays yours to send</small></div><span class="plus">+</span></div>
+            <div class="mrow" data-key="gates"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Gates and approvals</b><small>Starts fully checked, opens up as you trust it</small></div><span class="plus">+</span></div>
+            <div class="mrow" data-key="search"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Search before create</b><small>No duplicate merchants or deals, ever</small></div><span class="plus">+</span></div>
+            <div class="mrow" data-key="comment"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Auto comment logging</b><small>Every change leaves a dated, signed note</small></div><span class="plus">+</span></div>
+            <div class="mrow" data-key="boundary"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Privacy boundary</b><small>What sits in one room never leaks into another</small></div><span class="plus">+</span></div>
+            <div class="mrow" data-key="data"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Where your data sits</b><small>Your tenancies, your permissions, no consumer-level data</small></div><span class="plus">+</span></div>
+          </div>
+        </div>
+
+        <div class="fpanel clk" data-key="repo" style="cursor:pointer">
+          <p class="ph"><span class="ico" style="background:var(--purpleBg);color:var(--purple);display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h5l2 3h9v13H4z"/></svg>
+          </span> It all lives in one repo</p>
+          <p class="repo-note">The whole assistant is one version-controlled repository. The instructions, every skill, every routine, all as readable files. Nothing hidden in a black box, which matters when your CTO wants to look under the bonnet.<br><br>
+          Every change is tracked, reviewable and reversible. Deploy is one step: merge the change and it is live for the team. <code>merge = deploy</code><br><br>
+          Everything runs in Authi's own accounts, not ours. If we disappeared the day after we finished, it would keep running. It is an asset you own, not a subscription you rent.</p>
+        </div>
+
+        <div class="fpanel clk" data-key="lifecycle" style="cursor:pointer">
+          <p class="ph"><span class="ico" style="background:var(--tealBg);color:var(--teal);display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0 1 14-5m2-3v4h-4M20 12a8 8 0 0 1-14 5m-2 3v-4h4"/></svg>
+          </span> How we would build it</p>
+          <div class="lsteps">
+            <div class="lstep"><span class="ln">1</span><div class="lt"><b>Discovery</b><small>One session: how a Connect, a Crowd and a merchant deal each actually move</small></div></div>
+            <div class="lstep"><span class="ln">2</span><div class="lt"><b>Clone a proven build</b><small>We re-skin one already running, not from scratch</small></div></div>
+            <div class="lstep"><span class="ln">3</span><div class="lt"><b>Wire HubSpot first</b><small>Connector, field map, and the rule that HubSpot stays the source of truth</small></div></div>
+            <div class="lstep"><span class="ln">4</span><div class="lt"><b>Guided setup</b><small>60 to 90 minutes, seat by seat, in your accounts</small></div></div>
+            <div class="lstep"><span class="ln">5</span><div class="lt"><b>Two check-ins</b><small>A fortnight apart, with support the whole way through</small></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="foot">Running today: <b>Elisa</b> (Neve) <span class="sep">&middot;</span> <b>Adam</b> (Bonie) <span class="sep">&middot;</span> <b>the Outdoor Action team</b>, a whole retail team on seats just like these<br>
+    <span style="color:var(--faint)">CAIVO.AI &times; Authi &middot; July 2026 &middot; success measured on two numbers you already track: time from first meeting to signature, and how much of the week goes on admin rather than selling</span></p>
+
+  </div>
+</div>
+
+<!-- SIDE SHEET -->
+<div class="scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" aria-hidden="true">
+  <button class="sx" id="sx" aria-label="Close">&#10005;</button>
+  <div class="sinner">
+    <p class="stag" id="s-tag"></p>
+    <h2 id="s-title"></h2>
+    <div id="s-body"></div>
+  </div>
+</aside>
+
+<script>
+const DATA = {
+  seats: {tag:"The team", color:"var(--brand)", title:"One seat per person",
+    what:"Every team member gets their own assistant. Stephen, Olly, Dean, Tom, Dirk and Milton each sign in with their own account and connect their own tools: their inbox, their calendar, their own patch of the pipeline.",
+    how:"All seats share the same brain, the same Authi rulebook and the same shared knowledge, but each runs in its own context. This is exactly how the Outdoor Action team runs today: the owner, the buyer and the floor team all on seats, each shaped to their job, all reading and writing the same brain. Ask your seat about an account and it answers from everything the whole team has ever logged, not just what you personally remember. That matters most across a spread like yours, where what worked in Auckland last week has to be retold before Tom in Sydney or Dirk in Melbourne can use it.",
+    change:"Adding a person is a short onboarding checklist, not a rebuild. The hard work happens once, then every new seat is minutes of setup. When someone leaves, their knowledge stays in the brain rather than walking out with them."},
+  cto: {tag:"The team", color:"var(--teal)", title:"The CTO's seat",
+    what:"A seat for Tane that is also a way into the machine itself. Everything the assistant is made of is readable files in one repository, so a technical person can inspect it rather than take it on faith.",
+    how:"Every instruction, every skill and every routine is plain text, version controlled, and reviewable. Nothing is compiled or hidden. If Tane wants to change a rule, read what a routine actually does at 7am, or check exactly which permissions the HubSpot connection holds, it is all there in the open.",
+    change:"If Authi wants to take the whole thing in-house later, there is nothing to hand over that you do not already have. That is the point of building it this way."},
+  newyork: {tag:"The team", color:"var(--brand)", title:"The New York seat",
+    what:"Your team page says New York opens in September with a Head of Sales still to hire. That person is the best argument for building this now rather than later.",
+    how:"A new rep on the other side of the world starts on day one with everything the company has ever learned: every objection heard in NZ and Australia, the answer that worked, the merchants who said no and why, the campaigns that landed. Their daily brief runs at 7am their time, not yours. They are not waiting on a handover call at a bad hour to find out how Authi actually sells.",
+    change:"That seat can exist before the person does. We set it up as part of the build and it sits ready, so their first week is selling rather than onboarding."},
+  org: {tag:"The rulebook", color:"var(--brand)", title:"Org instructions",
+    what:"The shared rulebook the whole team runs on. Authi identity, tone of voice, safety rules, and the standard way of working: log everything, never duplicate, draft do not send.",
+    how:"Written once with you, kept in the repo, applied to every seat. This is where the pitch lives. It does not matter whether Olly, Tom or a brand-new hire in New York is in the room: the story comes out the same shape, with the same proof points. The notes afterwards come back in the same structure, so they are actually comparable.",
+    change:"Yours to own. Rewrite the voice, add a policy, tighten a standard. It is plain English, not code. Change it in one place and every seat updates."},
+  personal: {tag:"The rulebook", color:"var(--purple)", title:"Personal instructions",
+    what:"A thin personal layer on top of the shared rulebook. Each person's role, their patch, their quirks, and what they are allowed to touch.",
+    how:"It adds to the org layer for that seat only. Olly's is shaped around new business and first meetings, Tom's and Dirk's around their own territory and account list, Dean's around the merchants already signed and what happens next with them, Stephen's around the whole picture rather than one patch. Same brain, different lens per job.",
+    change:"Each person tunes their own without touching anyone else's. Say a preference out loud once and it sticks."},
+  brain: {tag:"The brain", color:"var(--brand)", title:"Claude, and the swappable harness",
+    what:"The intelligence. It reads the instructions, understands the request, picks the right skill, and does the work.",
+    how:"It never acts blindly. It drafts, you approve. The brain is what your team talks to. HubSpot and the shared knowledge sit behind it, and you rarely need to open either.",
+    change:"This is the part that protects you if the market moves. The skills, routines, data and connectors are all separate from the model, so the brain can be swapped for a different AI provider without rebuilding anything else. The same joint sits one layer down: HubSpot could be swapped for something else, Notion could be swapped for something else, and the machine around it keeps working. You are buying a frame that holds its shape while the parts inside it change. In this market, they will."},
+  skills: {tag:"Capability", color:"var(--teal)", title:"Skills, what it knows how to do",
+    what:"Modular capability packs, one folder each. The standard set ships on day one: email, meetings, tasks, documents, reporting, proposals. Then the ones we would write for Authi.",
+    how:"They switch on automatically when relevant. Where a standard pack overlaps something you already run it is remapped rather than duplicated: the CRM skill points at HubSpot, so there is no second CRM to keep in step. The Authi-specific ones are the interesting part. Objection capture pulls every push-back out of a recorded meeting and files it against the room it came from, because a network merchant and a Crowd advertiser object to completely different things. Merchant qualifying runs the eligibility check for you before anyone spends a meeting on it: terminal model, sites, transaction volume against the bar. Signed-to-live watches the clock between a signature and content actually running. Campaign log records what ran where and what came back, so the next pitch cites the last result rather than a generic number. City brief gives a rep everything known about an account before they walk in. And ask-the-business-anything is the one Olly described: something that knows where you have been, what you are doing, and updates as you go.",
+    change:"Anything Authi does repeatedly becomes its own skill. Build it once and every seat has it, without anyone having to remember the method. We clone structure between builds, never content: no client data, no client names and no client knowledge moves in either direction."},
+  routines: {tag:"Capability", color:"var(--blue)", title:"Routines, what it does on its own",
+    what:"The scheduled, hands-off jobs. These are the ones that run whether anyone remembers or not. The solid ones ship on day one: the daily brief, inbox triage, meeting notes filed with follow-ups, the chase on deals gone quiet, the Monday pipeline.",
+    how:"The daily brief runs in each person's local time, so Tom gets his at 7am in Sydney and the New York seat gets one at 7am there. The dashed ones are Authi-specific. The objection roll-up answers Olly's question directly: what have been the top objections this month, in which room, how many times, and which answers actually moved them. The signed-but-not-live routine watches the gap between a signature and content actually running on the terminals, because that gap is quiet, it is nobody's job by default, and it is where revenue leaks. The campaign wash-up files the result against the advertiser while it is still fresh, so the next conversation opens with a number rather than a pleasantry. And the referral routine chases anything that came in through the channel and has not had a first meeting yet.",
+    change:"Any job, any schedule. Routines are the easiest part of the system to change, and we adjust them in the check-in period based on what the team actually finds useful rather than what looked good on this page. One practical note: recording is the team's call, meeting by meeting, and the rules differ by market, which matters once New York is live. Where a meeting is not recorded, thirty seconds of dictation afterwards files identically."},
+  connectors: {tag:"Capability", color:"var(--amber)", title:"Connectors, what it can reach",
+    what:"The assistant's reach into the tools Authi already uses. It wires in, it does not replace them. Nothing migrates.",
+    how:"Gmail, Calendar, Drive and Notion are standard. For Authi we add HubSpot, which publishes its own supported connection for Claude, so this is a documented path rather than something bolted on the side. Each person connects their own with their own login, which means the assistant can only ever see what that person can already see in HubSpot. A rep cannot accidentally read something above their pay grade through the back door.",
+    change:"If you use a tool we have not wired yet, we add it. Reading your own portal is the one that needs saying honestly: there is no off-the-shelf connection for it, so it would be scoped separately after discovery, with your engineers and ours agreeing who builds which half. It sits deliberately outside the first build so nothing waits on it. When it does go on, it goes on read-only, so the brain can answer what is live and what a campaign returned without ever being able to change a number that gets billed."},
+  backend: {tag:"The data structure", color:"var(--grey)", title:"HubSpot stays the CRM",
+    what:"The rule that keeps the whole thing trustworthy: every piece of data has exactly one home. Contacts, companies, deals and pipeline live in HubSpot and only HubSpot. Email and diary stay where they are. Your portal holds campaigns and results and stays the system of record for anything billable. The brain layer adds the six things that have no good home today.",
+    how:"HubSpot is very good at the things a rep touches while selling. It was never built to hold a story. It has nowhere sensible for the reasoning behind a pitch, an objection library split by which room you are in, an account history spanning two reps and fourteen months, the state of a merchant between signature and go-live, or the wash-up from a campaign. That is what the brain layer is for. Every record in it carries the HubSpot ID of the company or deal it belongs to, so the two can never disagree about who is who, and a merchant who is also a Connect customer stays one company with two threads. When the brain needs to move a deal it writes directly into HubSpot in your name, rather than editing a copy and syncing it later, which is how most integrations end up with two versions of the truth. Worth saying plainly: HubSpot ships its own AI, and it is good at what it can see. What it cannot do is answer one question across HubSpot, the inbox, the drive, a meeting transcript and your portal at the same time, and remember the answer next month.",
+    change:"This is the one real call to make together, and it is worth twenty minutes in a room rather than a paragraph here. The version above keeps HubSpot as the CRM and adds a thin layer beside it. That is our recommendation, because nobody has to migrate and nothing you rely on for sequences or reporting moves. The alternative is to pull more of it into the brain layer, which gives you more but asks more of the team. We would want to watch how you actually run each of the three deals before pushing you either way."},
+  draft: {tag:"How it is wired", color:"var(--coral)", title:"Draft, do not send",
+    what:"The default posture for anything that leaves the building.",
+    how:"Follow-ups, merchant emails, brand updates and reports are prepared as drafts for the person whose name is on them. The assistant does the filing, the first draft and the recall. Your people do the judgement, the last click and the relationship. That is deliberate: the conversation is where a salesperson adds value, and nobody should find out their AI emailed a merchant something odd.",
+    change:"Per action, per person. Trusted internal jobs can run fully automatic. Anything a customer sees stays draft-first until you decide otherwise."},
+  gates: {tag:"How it is wired", color:"var(--coral)", title:"Gates and approvals",
+    what:"Human-in-the-loop checkpoints. Certain actions pause and ask before they happen.",
+    how:"We start deliberately conservative, with almost everything checked, and open the gates one at a time as the team sees the accuracy for themselves. Moving a deal stage is one of the gated ones on day one. It will not be perfect at the start. It will be close, and we fix the rest in the check-ins.",
+    change:"Per action, per seat. You decide how much rope to give it, and you can always pull one back."},
+  search: {tag:"How it is wired", color:"var(--coral)", title:"Search before create",
+    what:"No duplicates, ever. Before creating anything, the assistant searches for an existing match first.",
+    how:"Before an account is created it checks whether that venue already exists under a slightly different trading name, or sits under a group you already deal with. Before a task is written it checks whether someone has already raised it. If something similar exists it updates or links to it instead of making a second copy. It will still occasionally get one wrong, which is why every create leaves a dated note and merging two records is a one-line instruction rather than a cleanup project.",
+    change:"It is a core discipline baked into every skill, and it is the single biggest reason a shared brain stays clean enough that people keep trusting it."},
+  comment: {tag:"How it is wired", color:"var(--coral)", title:"Auto comment logging",
+    what:"An automatic audit trail. Every time the assistant creates or changes something, it leaves a dated, signed note on that record.",
+    how:"Nothing changes silently. Anyone on the team can see the history of a merchant, a deal or a campaign without having to ask a colleague, or worse, ask the person who has since left.",
+    change:"On by default everywhere. It is also how you audit the AI itself: every action it took is written down, so if it gets something wrong you can see exactly where."},
+  boundary: {tag:"How it is wired", color:"var(--coral)", title:"Privacy boundary",
+    what:"A wall between what should not mix. You run three relationships at once: the brands on Connect, the advertisers on Crowd, and the merchants hosting the network. Those rooms should not hear each other.",
+    how:"The boundary is set once with you and then enforced by the system everywhere: in search results, in briefings, and in what each seat's routines are allowed to touch. A Crowd pitch cannot quietly quote a named merchant's numbers, and a merchant conversation cannot leak what an advertiser is spending.",
+    change:"Yours to define, per role or per person, and to loosen or tighten over time. Assumption worth correcting: we have drawn the wall between the three commercial relationships. If the real sensitivity sits somewhere else, this is the block that changes first."},
+  data: {tag:"How it is wired", color:"var(--coral)", title:"Where your data sits",
+    what:"Everything runs inside Authi's own accounts. Your Google tenancy, your HubSpot portal, your Notion workspace, your Claude seats. CAIVO does not hold a copy of anything and does not sit between you and your tools.",
+    how:"Each person connects their own tools with their own login, so the assistant can only ever reach what that person could already open. The brain works with the business layer: merchants, brands, deals, meetings, campaigns and results. It has no reason to touch consumer-level interaction data and it does not, because that stays in your portal where it belongs. Anything the assistant changes leaves a dated note, so there is a full record of what it did and when.",
+    change:"Permissions are revocable from one settings screen, per person and per tool. If you want a specific mailbox, folder or record type walled off entirely, that is a setting rather than a rebuild. Your CTO can read exactly what each connection is scoped to, because it is written in the repo in plain text."},
+  repo: {tag:"Where it lives", color:"var(--purple)", title:"It all lives in one repo",
+    what:"The whole assistant is one version-controlled repository: the instructions, every skill, every routine and the config, all as readable files.",
+    how:"Nothing is hidden in a black-box app. Every change is tracked, reviewable and reversible. Deploying an update is one step: merge the change and it is live for the whole team.",
+    change:"Everything runs in Authi's own accounts, not ours. Permissions are revocable from one settings screen and exporting is just taking the files. If CAIVO disappeared the day after we finished, it would keep running. It is an asset you own, not a subscription you rent."},
+  lifecycle: {tag:"How we would build it", color:"var(--teal)", title:"Start to finish",
+    what:"A clear path from first conversation to a team using it every day, in small increments rather than everything at once.",
+    how:"1. Discovery: one session on how a Connect deal, a Crowd campaign and a merchant sign-up each actually move end to end, and where the time goes today. 2. Clone a proven build: we re-skin one already running rather than starting from scratch. 3. Wire HubSpot first: the connection, the field map, and the rule that HubSpot stays the source of truth. 4. Guided setup, 60 to 90 minutes, seat by seat, all in your accounts. 5. Two check-ins a fortnight apart, with support the whole way through, fixing what the team actually hits and opening the gates as trust is earned.",
+    change:"Because every build clones the last, each one is faster than the one before. Yours would stand on the shoulders of the builds already running, including a full retail team."}
+};
+
+const scrim = document.getElementById('scrim');
+const sheet = document.getElementById('sheet');
+function openSheet(key){
+  const d = DATA[key]; if(!d) return;
+  document.getElementById('s-tag').textContent = d.tag;
+  document.getElementById('s-tag').style.color = d.color;
+  document.getElementById('s-title').textContent = d.title;
+  document.getElementById('s-body').innerHTML =
+    '<div class="sblock"><p class="sl">What it is</p><p>'+d.what+'</p></div>'+
+    '<div class="sblock"><p class="sl">How it works</p><p>'+d.how+'</p></div>'+
+    '<div class="sblock"><p class="sl">How you change it</p><p>'+d.change+'</p></div>';
+  scrim.classList.add('on'); sheet.classList.add('on'); sheet.setAttribute('aria-hidden','false');
+}
+function closeSheet(){ scrim.classList.remove('on'); sheet.classList.remove('on'); sheet.setAttribute('aria-hidden','true'); }
+document.querySelectorAll('[data-key]').forEach(el=>{
+  el.addEventListener('click', ()=>openSheet(el.getAttribute('data-key')));
+});
+document.getElementById('sx').addEventListener('click', closeSheet);
+scrim.addEventListener('click', closeSheet);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeSheet(); });
+</script>
+</body>
+</html>
