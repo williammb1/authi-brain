@@ -42,7 +42,9 @@
   .legend .sw.dash{border:1px dashed #d8d4f2;background:var(--brandSoft);}
 
 
-  .note{font-size:12px;color:var(--soft);margin:12px 0 0;max-width:660px;line-height:1.5;font-weight:450;}
+  .note{font-size:12.5px;color:var(--ink2);margin:14px 0 0;max-width:660px;line-height:1.55;font-weight:450;
+    background:var(--amberBg);border:1px solid #ecdcb8;border-radius:12px;padding:12px 15px;}
+  .note b{font-weight:640;color:#8a5a00;}
 
   .stack{display:flex;flex-direction:column;align-items:center;margin-top:34px;}
 
@@ -208,12 +210,12 @@
 <body>
 <div class="wrap">
 
-  <p class="eyebrow">CAIVO &times; Authi &middot; Three rooms, four cities, one brain</p>
+  <p class="eyebrow">CAIVO &times; Authi &middot; Early look for Olly &middot; Not for circulation</p>
   <h1>Anatomy of an Authi Jarvis.</h1>
-  <p class="lede">Authi sells into three different rooms. Brands running Connect on their own terminals. Advertisers buying moments across the Crowd network. And the merchants who host that network in the first place. Three different pitches, three different sets of objections, four cities, carried by a small team. This is what it looks like when one brain holds all of it. The solid pieces are the out-the-box system already running for three teams today; the dashed pieces are what we would add for Authi. Your stack stays where it is: the brain wires into HubSpot rather than replacing it, so nobody migrates anything.</p>
+  <p class="lede">One shared brain, one seat per person. This is the same machine we build for every team, drawn with Authi's names on it. The solid pieces are what ships as standard. The dashed pieces are what we would suggest adding for Authi. Your stack stays where it is, and nobody migrates anything.</p>
   <span class="hint"><span class="pd"></span> Click any block to see what it does and how it can be changed</span>
-  <span class="legend"><span class="sw"></span> Out of the box <span class="sw dash" style="margin-left:10px"></span> Added for Authi</span>
-  <p class="note">Built from Authi's own published material and one conversation with Olly. Where we have assumed how you sell rather than read it, the block says so. Correct it and the map changes.</p>
+  <span class="legend"><span class="sw"></span> Standard <span class="sw dash" style="margin-left:10px"></span> Suggested for Authi</span>
+  <p class="note"><b>Olly, this one is for you rather than for forwarding.</b> It is a rough look so you can see what the thing actually is. Half of it only makes sense with someone talking over it, and read cold it is easy to take the wrong way. Give me a shout and I will walk you and the team through it properly, then we can work out what Authi's version really looks like.</p>
 
   <div class="stack">
 
@@ -230,8 +232,6 @@
       <div class="seat add clk" data-key="newyork"><div class="av">NY</div><b>New York</b><small>September</small></div>
     </div>
 
-    <p class="note" style="text-align:center;margin:14px auto 0;max-width:640px"><i>Assumption worth correcting: Olly describes the working team as about four people, mostly selling, plus one technical person. Your team page names more. We have drawn a seat for everyone who is selling or running the business day to day, and left the rest easy to add.</i></p>
-
     <div class="cwrap"><div class="conn"></div><span class="clabel">every seat, one brain, three time zones</span><div class="conn"></div></div>
 
     <!-- INSTRUCTIONS -->
@@ -244,8 +244,8 @@
           </span>
           <div><div class="ttl">Org instructions</div><div class="sub">Shared across everyone</div></div>
         </div>
-        <div class="body">The Authi rulebook. Identity, tone of voice, safety rules, and the standard way of working. Written once with you, applied to every seat. This is where the three pitches live, so a Crowd advertiser in Melbourne hears the same story as one in Auckland, and nobody accidentally runs the merchant pitch at a brand.</div>
-        <div class="chips"><span class="chip">Voice</span><span class="chip">Safety</span><span class="chip">Log everything</span><span class="chip">No duplicates</span><span class="chip dash">Connect pitch</span><span class="chip dash">Crowd pitch</span><span class="chip dash">Merchant pitch</span><span class="chip dash">Note standard</span></div>
+        <div class="body">The Authi rulebook. Identity, tone of voice, safety rules, and the standard way of working. Written once with you, applied to every seat.</div>
+        <div class="chips"><span class="chip">Voice</span><span class="chip">Safety</span><span class="chip">Log everything</span><span class="chip">No duplicates</span><span class="chip dash">The pitch</span></div>
       </div>
       <div class="card clk" data-key="personal">
         <div class="ihd">
@@ -254,8 +254,8 @@
           </span>
           <div><div class="ttl">Personal instructions</div><div class="sub">Per person, on top</div></div>
         </div>
-        <div class="body">A thin personal layer. Olly's seat is shaped around new business and first meetings, Tom's and Dirk's around their own city and account list, Milton's around getting signed merchants actually live, Stephen's around the whole picture rather than one patch. Same brain, different lens per job.</div>
-        <div class="chips"><span class="chip">Role</span><span class="chip">Their inbox</span><span class="chip">Their voice</span><span class="chip dash">Their territory</span><span class="chip dash">Their targets</span></div>
+        <div class="body">A thin personal layer. Each person's role, their patch, their quirks, and what they are allowed to touch. Tuned per seat without affecting anyone else.</div>
+        <div class="chips"><span class="chip">Role</span><span class="chip">Their inbox</span><span class="chip">Their voice</span><span class="chip dash">Their territory</span></div>
       </div>
     </div>
 
@@ -269,7 +269,7 @@
         <div><div class="nm">Claude</div><div class="tl">Reads the rules, picks the right skill, does the work</div></div>
         <span class="swap">&#8644; Swappable</span>
       </div>
-      <p class="bnote">The intelligence sits behind a model seam. Because the skills, routines, data and connectors are all separate from the model, the brain can be swapped for another AI without rebuilding the machine. The same is true one layer down: HubSpot, Notion and every connector sit behind their own seam, so a tool can be changed without touching the rest. The model is a part you can swap, not the whole machine, and you are never locked to one vendor.</p>
+      <p class="bnote">The intelligence sits behind a model seam. Because the skills, routines, data and connectors are all separate from the model, the brain can be swapped for another AI without rebuilding the machine. The same is true one layer down: the back end is a part you can change too. You are never locked to one vendor.</p>
     </div>
 
     <div class="cwrap"><div class="conn"></div><span class="clabel">the brain draws on three things</span><div class="conn"></div></div>
@@ -277,7 +277,6 @@
     <!-- CAPABILITY TRIO -->
     <p class="llab">What it knows, does, and can reach</p>
     <div class="trio">
-      <!-- SKILLS -->
       <div class="card clk" data-key="skills">
         <div class="ihd">
           <span class="ico" style="background:var(--tealBg);color:var(--teal)">
@@ -285,13 +284,12 @@
           </span>
           <div><div class="ttl">Skills</div><div class="sub">What it knows how to do</div></div>
         </div>
-        <div class="body">Modular packs that switch on automatically when relevant. The solid ones ship on day one. Where a standard pack overlaps a tool Authi already runs, it is remapped rather than duplicated: our CRM skill points at HubSpot instead of building a second one.</div>
+        <div class="body">Modular packs that switch on automatically when relevant. Ask about a contact, the CRM skill loads. Ask for a brief, the meetings skill loads. The standard set ships on day one.</div>
         <div class="chips">
-          <span class="chip">Email</span><span class="chip">Meetings</span><span class="chip">Tasks</span><span class="chip">Documents</span><span class="chip">Reporting</span><span class="chip">Proposals</span>
-          <span class="chip dash">CRM &#8594; HubSpot</span><span class="chip dash">Objection capture</span><span class="chip dash">Merchant qualifying</span><span class="chip dash">Signed to live</span><span class="chip dash">Campaign log</span><span class="chip dash">City brief</span><span class="chip dash">Ask the business anything</span>
+          <span class="chip">CRM</span><span class="chip">Email</span><span class="chip">Meetings</span><span class="chip">Tasks</span><span class="chip">Calendar</span><span class="chip">Reporting</span><span class="chip">Proposals</span><span class="chip">Documents</span>
+          <span class="chip dash">HubSpot</span><span class="chip dash">Objection capture</span><span class="chip dash">Your custom skill</span>
         </div>
       </div>
-      <!-- ROUTINES -->
       <div class="card clk" data-key="routines">
         <div class="ihd">
           <span class="ico" style="background:var(--blueBg);color:var(--blue)">
@@ -300,18 +298,14 @@
           <div><div class="ttl">Routines</div><div class="sub">What it does on its own</div></div>
         </div>
         <div class="rlist">
-          <div class="rrow"><span class="tm">7:00am</span> Daily brief, in each person's local time</div>
-          <div class="rrow"><span class="tm">Hourly</span> Inbox triage, filed and drafted</div>
-          <div class="rrow"><span class="tm">On rec</span> Meeting &#8594; filed to the account and the deal</div>
-          <div class="rrow"><span class="tm">3&#215;/day</span> Deals gone quiet, draft the chase</div>
-          <div class="rrow"><span class="tm">Mon</span> Weekly pipeline, whole team in one email</div>
-          <div class="rrow"><span class="tm dash">Weekly</span> Objection roll-up, split by room</div>
-          <div class="rrow"><span class="tm dash">Daily</span> Signed but not live, if that gap exists</div>
-          <div class="rrow"><span class="tm dash">Campaign end</span> Wash-up filed to the advertiser</div>
-          <div class="rrow"><span class="tm dash">Weekly</span> Verifone referrals with no first meeting yet</div>
+          <div class="rrow"><span class="tm">7:00am</span> Daily briefing</div>
+          <div class="rrow"><span class="tm">Hourly</span> Email triage + draft</div>
+          <div class="rrow"><span class="tm">On rec</span> Meeting notes &#8594; CRM + tasks</div>
+          <div class="rrow"><span class="tm">3&#215;/day</span> Follow-up cadence</div>
+          <div class="rrow"><span class="tm">Mon</span> Weekly pipeline</div>
+          <div class="rrow"><span class="tm dash">Custom</span> Any job, any schedule</div>
         </div>
       </div>
-      <!-- CONNECTORS -->
       <div class="card clk" data-key="connectors">
         <div class="ihd">
           <span class="ico" style="background:var(--amberBg);color:var(--amber)">
@@ -319,10 +313,10 @@
           </span>
           <div><div class="ttl">Connectors</div><div class="sub">What it can reach</div></div>
         </div>
-        <div class="body">Wires into the tools Authi already uses. Each person connects their own with their own login, so access follows the person and nobody sees more than they should. Nothing migrates; the brain reads and writes in place. One new tool is involved, Notion, which is where the brain layer below lives. Your team never has to open it.</div>
+        <div class="body">Wires into the tools you already use. Each person connects their own with a login, so access follows the person. Nothing migrates; the brain reads and writes in place.</div>
         <div class="chips">
-          <span class="chip">Gmail</span><span class="chip">Calendar</span><span class="chip">Drive</span><span class="chip">Plaud</span><span class="chip dash">Notion</span>
-          <span class="chip dash">HubSpot</span><span class="chip dash">The Authi portal &middot; read only</span><span class="chip dash">Your tool</span>
+          <span class="chip">Gmail</span><span class="chip">Calendar</span><span class="chip">Drive</span><span class="chip">Notion</span><span class="chip">Plaud</span>
+          <span class="chip dash">HubSpot</span><span class="chip dash">Your tool</span>
         </div>
       </div>
     </div>
@@ -330,34 +324,25 @@
     <div class="cwrap"><div class="conn tall"></div><span class="clabel">everything reads and writes to one place</span><div class="conn tall"></div></div>
 
     <!-- DATA STRUCTURE -->
-    <p class="llab">The data structure</p>
+    <p class="llab">The single source of truth</p>
     <div class="card clk full" data-key="backend">
       <div class="ihd" style="padding-bottom:12px">
         <span class="ico" style="background:var(--greyBg);color:var(--grey)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
         </span>
-        <div><div class="ttl">HubSpot stays the CRM. The brain adds the bit HubSpot has no home for</div><div class="sub">Every record has exactly one home. Nothing is copied, so nothing can drift</div></div>
+        <div><div class="ttl">CRM + Task Manager</div><div class="sub">Notion today, and HubSpot is the obvious question for Authi. That is one for the session</div></div>
       </div>
       <div class="bewrap">
         <div class="behalf">
-          <p class="beh"><span class="dot"></span> Systems of record &middot; your stack, stays</p>
-          <div class="drow"><b>HubSpot</b><span>contacts, companies, deals, pipeline, sequences and tracked email. The CRM stays the CRM, and a deal stage is only ever changed here</span></div>
-          <div class="drow"><b>The Authi portal</b><span>campaigns, interactions and results. Read only, and it stays the system of record for anything that gets billed</span></div>
-          <div class="drow"><b>Gmail + Calendar</b><span>comms and diary: read everything, draft only</span></div>
-          <div class="drow"><b>Drive</b><span>creative, agreements and decks, one naming standard</span></div>
+          <p class="beh"><span class="dot"></span> CRM</p>
+          <div class="chips" style="padding:0"><span class="chip">People</span><span class="chip">Companies</span><span class="chip">Deals</span><span class="chip">Interactions</span></div>
         </div>
         <div class="behalf">
-          <p class="beh"><span class="dot new"></span> The brain layer &middot; new, in Notion</p>
-          <div class="drow new"><b>Accounts</b><span>one page per Connect brand, Crowd advertiser or network merchant, carrying which of the three they are and everything the team knows about them</span></div>
-          <div class="drow new"><b>Terminals + go-live</b><span>sites, models, monthly transactions against the eligibility bar, signed date, load date, live date, and which agreement version they are on</span></div>
-          <div class="drow new"><b>Campaign log</b><span>every campaign, its goal, where it ran, what came back, and the wash-up, so the next pitch cites the last result</span></div>
-          <div class="drow new"><b>Channel + referrals</b><span>every referral that comes in through Verifone or EFTPOS NZ, who sent it, and what happened to it, because a channel lead that goes quiet is nobody's job by default</span></div>
-          <div class="drow new"><b>Interactions</b><span>every meeting, call and key thread, filed to the account and the HubSpot deal</span></div>
-          <div class="drow new"><b>Objection library</b><span>every objection heard, which room it came from, and the answer that actually worked</span></div>
-          <div class="drow new"><b>The playbook</b><span>the Connect, Crowd and merchant pitches, their NZ, AU and US variants, and the standards every seat writes to</span></div>
+          <p class="beh"><span class="dot"></span> Work</p>
+          <div class="chips" style="padding:0"><span class="chip">Tasks</span><span class="chip">Projects</span><span class="chip dash">Your custom board</span></div>
         </div>
       </div>
-      <div class="dlink"><b>How it links:</b> HubSpot holds the deal, the brain layer holds the story. Every record in Notion carries the HubSpot ID of the company or deal it belongs to, so the two can never disagree about who is who, and one merchant who is also a Connect customer stays one company with two threads rather than two half-records. When the brain needs to change a deal it writes straight into HubSpot over its own supported connection, in your name and with your permissions, rather than editing a copy and syncing later. Nothing is stored twice, so there is never a second CRM to keep in step, and never a question of which version is true.</div>
+      <div class="dlink"><b>Why it is shaped like this:</b> four simple tables that point at each other. Ask the assistant what the last thing said to someone was and it walks the links: finds the person, finds their company, finds the deals attached, finds every interaction logged against them. That is the whole trick. Everything the assistant learns lands here, structured and linked, so the next question is easy to answer. Whether that lives in Notion or in HubSpot for Authi is exactly the sort of thing we would work out together rather than guess at now.</div>
     </div>
 
     <div class="cwrap"><div class="conn tall"></div></div>
@@ -365,13 +350,13 @@
     <!-- FLOW STEPPER -->
     <div class="flow full">
       <h3>How a single moment moves through it</h3>
-      <p class="sub">Olly walks out of a first meeting with a merchant. It is all filed and drafted before he reaches the car.</p>
+      <p class="sub">Olly walks out of a meeting. It is all filed and drafted before he reaches the car.</p>
       <div class="steps">
-        <div class="step"><div class="n">1</div><div class="st">Something happens</div><div class="sd">The meeting is recorded, or an advertiser replies to a thread.</div></div>
-        <div class="step"><div class="n">2</div><div class="st">A routine catches it</div><div class="sd">Within minutes it is filed to the right account and the right HubSpot deal.</div></div>
-        <div class="step"><div class="n">3</div><div class="st">The brain reads it</div><div class="sd">Pulls out what was agreed, what was pushed back on, and what happens next.</div></div>
-        <div class="step"><div class="n">4</div><div class="st">HubSpot updates</div><div class="sd">Tasks appear, the stage change waits for Olly to confirm, and the objection files itself either way.</div></div>
-        <div class="step"><div class="n">5</div><div class="st">Olly gets the last click</div><div class="sd">The follow-up is drafted in his voice. Nothing goes out without a human.</div></div>
+        <div class="step"><div class="n">1</div><div class="st">Something happens</div><div class="sd">A meeting is recorded, or an email lands.</div></div>
+        <div class="step"><div class="n">2</div><div class="st">A routine catches it</div><div class="sd">Transcript processing or email triage fires.</div></div>
+        <div class="step"><div class="n">3</div><div class="st">The brain reads it</div><div class="sd">Picks the skill, structures the content.</div></div>
+        <div class="step"><div class="n">4</div><div class="st">The CRM updates</div><div class="sd">Note on the contact and deal, follow-up tasks, audit comment.</div></div>
+        <div class="step"><div class="n">5</div><div class="st">You get the last click</div><div class="sd">Anything outbound waits at a gate for your approval.</div></div>
       </div>
     </div>
 
@@ -390,12 +375,11 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
           </span> How it is wired</p>
           <div class="mlist">
-            <div class="mrow" data-key="draft"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Draft, do not send</b><small>Anything a merchant or brand sees stays yours to send</small></div><span class="plus">+</span></div>
-            <div class="mrow" data-key="gates"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Gates and approvals</b><small>Starts fully checked, opens up as you trust it</small></div><span class="plus">+</span></div>
-            <div class="mrow" data-key="search"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Search before create</b><small>No duplicate merchants or deals, ever</small></div><span class="plus">+</span></div>
-            <div class="mrow" data-key="comment"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Auto comment logging</b><small>Every change leaves a dated, signed note</small></div><span class="plus">+</span></div>
-            <div class="mrow" data-key="boundary"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Privacy boundary</b><small>What sits in one room never leaks into another</small></div><span class="plus">+</span></div>
-            <div class="mrow" data-key="data"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Where your data sits</b><small>Your tenancies, your permissions, no consumer-level data</small></div><span class="plus">+</span></div>
+            <div class="mrow" data-key="comment"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Auto comment logging</b><small>Every change signs an audit note</small></div><span class="plus">+</span></div>
+            <div class="mrow" data-key="gates"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Gates and approvals</b><small>Costly actions pause and ask first</small></div><span class="plus">+</span></div>
+            <div class="mrow" data-key="search"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Search before create</b><small>No duplicate records, ever</small></div><span class="plus">+</span></div>
+            <div class="mrow" data-key="draft"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Draft, do not send</b><small>Humans keep the outbound click</small></div><span class="plus">+</span></div>
+            <div class="mrow" data-key="boundary"><span class="mk" style="background:var(--coral)"></span><div class="mt"><b>Privacy boundary</b><small>Internal never leaks to a client view</small></div><span class="plus">+</span></div>
           </div>
         </div>
 
@@ -405,7 +389,7 @@
           </span> It all lives in one repo</p>
           <p class="repo-note">The whole assistant is one version-controlled repository. The instructions, every skill, every routine, all as readable files. Nothing hidden in a black box, which matters when your CTO wants to look under the bonnet.<br><br>
           Every change is tracked, reviewable and reversible. Deploy is one step: merge the change and it is live for the team. <code>merge = deploy</code><br><br>
-          Everything runs in Authi's own accounts, not ours. If we disappeared the day after we finished, it would keep running. It is an asset you own, not a subscription you rent.</p>
+          Everything runs in your own accounts, not ours. It is an asset you own, not a subscription you rent.</p>
         </div>
 
         <div class="fpanel clk" data-key="lifecycle" style="cursor:pointer">
@@ -413,19 +397,18 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0 1 14-5m2-3v4h-4M20 12a8 8 0 0 1-14 5m-2 3v-4h4"/></svg>
           </span> How we would build it</p>
           <div class="lsteps">
-            <div class="lstep"><span class="ln">1</span><div class="lt"><b>Discovery</b><small>One session: how a Connect, a Crowd and a merchant deal each actually move</small></div></div>
+            <div class="lstep"><span class="ln">1</span><div class="lt"><b>A session with the team</b><small>Who uses it, what to capture, and what the dashed bits actually are</small></div></div>
             <div class="lstep"><span class="ln">2</span><div class="lt"><b>Clone a proven build</b><small>We re-skin one already running, not from scratch</small></div></div>
-            <div class="lstep"><span class="ln">3</span><div class="lt"><b>Wire HubSpot first</b><small>Connector, field map, and the rule that HubSpot stays the source of truth</small></div></div>
-            <div class="lstep"><span class="ln">4</span><div class="lt"><b>Guided setup</b><small>60 to 90 minutes, seat by seat, in your accounts</small></div></div>
-            <div class="lstep"><span class="ln">5</span><div class="lt"><b>Two check-ins</b><small>A fortnight apart, with support the whole way through</small></div></div>
+            <div class="lstep"><span class="ln">3</span><div class="lt"><b>Build + review swarm</b><small>Five checks before anything ships</small></div></div>
+            <div class="lstep"><span class="ln">4</span><div class="lt"><b>Guided setup</b><small>60 to 90 minutes to connect tools and go live</small></div></div>
+            <div class="lstep"><span class="ln">5</span><div class="lt"><b>Training + check-ins</b><small>We teach the team, the routines reinforce it</small></div></div>
           </div>
         </div>
 
       </div>
     </div>
 
-    <p class="foot">Running today: <b>Elisa</b> (Neve) <span class="sep">&middot;</span> <b>Adam</b> (Jarvis) <span class="sep">&middot;</span> <b>the Outdoor Action team</b>, a whole retail team on seats just like these<br>
-    <span style="color:var(--faint)">CAIVO.AI &times; Authi &middot; July 2026 &middot; success is measured on one number: how long a deal takes from first meeting to signature, baselined in discovery and reviewed at the second check-in</span></p>
+    <p class="foot"><span style="color:var(--faint)">CAIVO.AI &times; Authi &middot; July 2026 &middot; a starting point rather than a plan, and best gone through in person</span></p>
 
   </div>
 </div>
@@ -444,77 +427,73 @@
 <script>
 const DATA = {
   seats: {tag:"The team", color:"var(--brand)", title:"One seat per person",
-    what:"Every team member gets their own assistant. Stephen, Olly, Dean, Tom, Dirk and Milton each sign in with their own account and connect their own tools: their inbox, their calendar, their own patch of the pipeline.",
-    how:"All seats share the same brain, the same Authi rulebook and the same shared knowledge, but each runs in its own context. This is exactly how the Outdoor Action team runs today: the owner, the buyer and the floor team all on seats, each shaped to their job, all reading and writing the same brain. Ask your seat about an account and it answers from everything the whole team has ever logged, not just what you personally remember. That matters most across a spread like yours, where what worked in Auckland last week has to be retold before Tom in Sydney or Dirk in Melbourne can use it.",
+    what:"Every team member gets their own assistant. Each person signs in with their own account and connects their own tools: their inbox, their calendar, their own patch of the pipeline.",
+    how:"All seats share the same brain, the same rulebook and the same shared knowledge, but each runs in its own context. Ask your seat about an account and it answers from everything the whole team has logged, not just what you personally remember. That matters most across a spread like Authi's, where what worked in Auckland last week has to be retold before Tom in Sydney or Dirk in Melbourne can use it.",
     change:"Adding a person is a short onboarding checklist, not a rebuild. The hard work happens once, then every new seat is minutes of setup. When someone leaves, their knowledge stays in the brain rather than walking out with them."},
   cto: {tag:"The team", color:"var(--teal)", title:"The CTO's seat",
     what:"A seat for Tane that is also a way into the machine itself. Everything the assistant is made of is readable files in one repository, so a technical person can inspect it rather than take it on faith.",
-    how:"Every instruction, every skill and every routine is plain text, version controlled, and reviewable. Nothing is compiled or hidden. If Tane wants to change a rule, read what a routine actually does at 7am, or check exactly which permissions the HubSpot connection holds, it is all there in the open.",
-    change:"If Authi wants to take the whole thing in-house later, there is nothing to hand over that you do not already have. That is the point of building it this way."},
+    how:"Every instruction, every skill and every routine is plain text, version controlled, and reviewable. Nothing is compiled or hidden. If he wants to change a rule, read what a routine actually does at 7am, or check exactly which permissions a connection holds, it is all there in the open.",
+    change:"If Authi ever wants to take the whole thing in-house, there is nothing to hand over that you do not already have. That is the point of building it this way."},
   newyork: {tag:"The team", color:"var(--brand)", title:"The New York seat",
-    what:"Your team page says New York opens in September with a Head of Sales still to hire. That person is the best argument for building this now rather than later.",
-    how:"A new rep on the other side of the world starts on day one with everything the company has ever learned: every objection heard in NZ and Australia, the answer that worked, the merchants who said no and why, the campaigns that landed. Their daily brief runs at 7am their time, not yours. They are not waiting on a handover call at a bad hour to find out how Authi actually sells.",
-    change:"That seat can exist before the person does. We set it up as part of the build and it sits ready, so their first week is selling rather than onboarding."},
+    what:"Your team page says New York opens in September with a Head of Sales still to hire. That person is the best argument for doing this sooner rather than later.",
+    how:"A new rep on the other side of the world starts on day one with everything the company has already learned, and their daily brief runs at 7am their time rather than yours. Their first week is selling instead of onboarding.",
+    change:"That seat can exist before the person does. It is a checklist to add, not a rebuild."},
   org: {tag:"The rulebook", color:"var(--brand)", title:"Org instructions",
-    what:"The shared rulebook the whole team runs on. Authi identity, tone of voice, safety rules, and the standard way of working: log everything, never duplicate, draft do not send.",
-    how:"Written once with you, kept in the repo, applied to every seat. This is where the pitch lives. It does not matter whether Olly, Tom or a brand-new hire in New York is in the room: the story comes out the same shape, with the same proof points. The notes afterwards come back in the same structure, so they are actually comparable.",
+    what:"The shared rulebook the whole team runs on. Identity, tone of voice, safety rules, and the standard way of working: log everything, never duplicate, draft do not send.",
+    how:"Written once with you, kept in the repo, applied to every seat. It is also where the pitch would live, so it does not matter who is in the room, the story comes out the same shape and the notes afterwards come back in the same structure.",
     change:"Yours to own. Rewrite the voice, add a policy, tighten a standard. It is plain English, not code. Change it in one place and every seat updates."},
   personal: {tag:"The rulebook", color:"var(--purple)", title:"Personal instructions",
     what:"A thin personal layer on top of the shared rulebook. Each person's role, their patch, their quirks, and what they are allowed to touch.",
-    how:"It adds to the org layer for that seat only. Olly's is shaped around new business and first meetings, Tom's and Dirk's around their own territory and account list, Dean's around the merchants already signed and what happens next with them, Stephen's around the whole picture rather than one patch. Same brain, different lens per job.",
+    how:"It adds to the org layer for that seat only. A new business seat is shaped differently from a city sales seat, which is shaped differently from the CEO's. Same brain, different lens per job.",
     change:"Each person tunes their own without touching anyone else's. Say a preference out loud once and it sticks."},
-  brain: {tag:"The brain", color:"var(--brand)", title:"Claude, and the swappable harness",
+  brain: {tag:"The brain", color:"var(--brand)", title:"Claude, and the model seam",
     what:"The intelligence. It reads the instructions, understands the request, picks the right skill, and does the work.",
-    how:"It never acts blindly. It drafts, you approve. The brain is what your team talks to. HubSpot and the shared knowledge sit behind it, and you rarely need to open either.",
-    change:"This is the part that protects you if the market moves. The skills, routines, data and connectors are all separate from the model, so the brain can be swapped for a different AI provider without rebuilding anything else. The same joint sits one layer down: HubSpot could be swapped for something else, Notion could be swapped for something else, and the machine around it keeps working. You are buying a frame that holds its shape while the parts inside it change. In this market, they will."},
+    how:"It never acts blindly. It drafts, you approve. The brain is what your team talks to; the CRM sits behind it, and you rarely need to open it.",
+    change:"This is the part that protects you if the market moves. The skills, routines, data and connectors are all separate from the model, so the brain can be swapped for a different AI provider without rebuilding anything else. The same joint sits one layer down: the back end can be changed too, and the machine around it keeps working. You are buying a frame that holds its shape while the parts inside it change. In this market, they will."},
   skills: {tag:"Capability", color:"var(--teal)", title:"Skills, what it knows how to do",
-    what:"Modular capability packs, one folder each. The standard set ships on day one: email, meetings, tasks, documents, reporting, proposals. Then the ones we would write for Authi.",
-    how:"They switch on automatically when relevant. Where a standard pack overlaps something you already run it is remapped rather than duplicated: the CRM skill points at HubSpot, so there is no second CRM to keep in step. The Authi-specific ones are the interesting part. Objection capture pulls every push-back out of a recorded meeting and files it against the room it came from, because a network merchant and a Crowd advertiser object to completely different things. Merchant qualifying runs the eligibility check for you before anyone spends a meeting on it: terminal model, sites, transaction volume against the bar. Signed-to-live watches the clock between a signature and content actually running. Campaign log records what ran where and what came back, so the next pitch cites the last result rather than a generic number. City brief gives a rep everything known about an account before they walk in. And ask-the-business-anything is the one Olly described: something that knows where you have been, what you are doing, and updates as you go.",
-    change:"Anything Authi does repeatedly becomes its own skill. Build it once and every seat has it, without anyone having to remember the method. We clone structure between builds, never content: no client data, no client names and no client knowledge moves in either direction."},
+    what:"Modular capability packs, one folder each. The standard set ships on day one: CRM, email, meetings, tasks, calendar, reporting, proposals and documents. There is also a how-to-use-your-assistant skill in every build, which is not optional and does more work than people expect.",
+    how:"They switch on automatically when relevant. You never pick a tool from a menu. Dictate loosely after a meeting and the meetings skill structures it; ask what the last thing said to someone was and the CRM skill walks the records.",
+    change:"The dashed ones are the suggestion for Authi, not a spec. HubSpot is the obvious one. Objection capture is the one Olly asked for: every push-back pulled out of a recorded meeting and filed where the whole team can see it. Beyond that, anything Authi does repeatedly can become its own skill, but we would want to watch how you actually work before writing any of them."},
   routines: {tag:"Capability", color:"var(--blue)", title:"Routines, what it does on its own",
-    what:"The scheduled, hands-off jobs. These are the ones that run whether anyone remembers or not. The solid ones ship on day one: the daily brief, inbox triage, meeting notes filed with follow-ups, the chase on deals gone quiet, the Monday pipeline.",
-    how:"The daily brief runs in each person's local time, so Tom gets his at 7am in Sydney and the New York seat gets one at 7am there. The dashed ones are Authi-specific. The objection roll-up answers Olly's question directly: what have been the top objections this month, in which room, how many times, and which answers actually moved them. The signed-but-not-live routine watches the gap between a signature and content actually running on the terminals, because that gap is quiet, it is nobody's job by default, and it is where revenue leaks. The campaign wash-up files the result against the advertiser while it is still fresh, so the next conversation opens with a number rather than a pleasantry. And the referral routine chases anything that came in through the channel and has not had a first meeting yet.",
-    change:"Any job, any schedule. Routines are the easiest part of the system to change, and we adjust them in the check-in period based on what the team actually finds useful rather than what looked good on this page. One practical note: recording is the team's call, meeting by meeting, and the rules differ by market, which matters once New York is live. Where a meeting is not recorded, thirty seconds of dictation afterwards files identically."},
+    what:"The scheduled, hands-off jobs that run whether anyone remembers or not. This is the standard fleet, unchanged: the daily brief, inbox triage, meeting notes filed with follow-up tasks, the chase on deals gone quiet, and the Monday pipeline.",
+    how:"The daily brief runs in each person's local time, so Tom would get his at 7am in Sydney and a New York seat at 7am there. The meeting routine is the one that usually lands hardest: a recording becomes a filed note on the right contact and deal, with the follow-ups already written, within minutes of the meeting ending.",
+    change:"Any job, any schedule. Routines are the easiest part of the system to change and the cheapest to add, so we deliberately do not design them up front. We ship the standard set, watch what the team actually reaches for, and add during the check-ins."},
   connectors: {tag:"Capability", color:"var(--amber)", title:"Connectors, what it can reach",
-    what:"The assistant's reach into the tools Authi already uses. It wires in, it does not replace them. Nothing migrates.",
-    how:"Gmail, Calendar, Drive and Notion are standard. For Authi we add HubSpot, which publishes its own supported connection for Claude, so this is a documented path rather than something bolted on the side. Each person connects their own with their own login, which means the assistant can only ever see what that person can already see in HubSpot. A rep cannot accidentally read something above their pay grade through the back door.",
-    change:"If you use a tool we have not wired yet, we add it. Reading your own portal is the one that needs saying honestly: there is no off-the-shelf connection for it, so it would be scoped separately after discovery, with your engineers and ours agreeing who builds which half. It sits deliberately outside the first build so nothing waits on it. When it does go on, it goes on read-only, so the brain can answer what is live and what a campaign returned without ever being able to change a number that gets billed."},
-  backend: {tag:"The data structure", color:"var(--grey)", title:"HubSpot stays the CRM",
-    what:"The rule that keeps the whole thing trustworthy: every piece of data has exactly one home. Contacts, companies, deals and pipeline live in HubSpot and only HubSpot. Email and diary stay where they are. Your portal holds campaigns and results and stays the system of record for anything billable. The brain layer adds the six things that have no good home today.",
-    how:"HubSpot is very good at the things a rep touches while selling. It was never built to hold a story. It has nowhere sensible for the reasoning behind a pitch, an objection library split by which room you are in, an account history spanning two reps and fourteen months, the state of a merchant between signature and go-live, or the wash-up from a campaign. That is what the brain layer is for. Every record in it carries the HubSpot ID of the company or deal it belongs to, so the two can never disagree about who is who, and a merchant who is also a Connect customer stays one company with two threads. When the brain needs to move a deal it writes directly into HubSpot in your name, rather than editing a copy and syncing it later, which is how most integrations end up with two versions of the truth. Worth saying plainly: HubSpot ships its own AI, and it is good at what it can see. What it cannot do is answer one question across HubSpot, the inbox, the drive, a meeting transcript and your portal at the same time, and remember the answer next month.",
-    change:"This is the one real call to make together, and it is worth twenty minutes in a room rather than a paragraph here. The version above keeps HubSpot as the CRM and adds a thin layer beside it. That is our recommendation, because nobody has to migrate and nothing you rely on for sequences or reporting moves. The alternative is to pull more of it into the brain layer, which gives you more but asks more of the team. We would want to watch how you actually run each of the three deals before pushing you either way."},
-  draft: {tag:"How it is wired", color:"var(--coral)", title:"Draft, do not send",
-    what:"The default posture for anything that leaves the building.",
-    how:"Follow-ups, merchant emails, brand updates and reports are prepared as drafts for the person whose name is on them. The assistant does the filing, the first draft and the recall. Your people do the judgement, the last click and the relationship. That is deliberate: the conversation is where a salesperson adds value, and nobody should find out their AI emailed a merchant something odd.",
-    change:"Per action, per person. Trusted internal jobs can run fully automatic. Anything a customer sees stays draft-first until you decide otherwise."},
-  gates: {tag:"How it is wired", color:"var(--coral)", title:"Gates and approvals",
-    what:"Human-in-the-loop checkpoints. Certain actions pause and ask before they happen.",
-    how:"We start deliberately conservative, with almost everything checked, and open the gates one at a time as the team sees the accuracy for themselves. Moving a deal stage is one of the gated ones on day one. It will not be perfect at the start. It will be close, and we fix the rest in the check-ins.",
-    change:"Per action, per seat. You decide how much rope to give it, and you can always pull one back."},
-  search: {tag:"How it is wired", color:"var(--coral)", title:"Search before create",
-    what:"No duplicates, ever. Before creating anything, the assistant searches for an existing match first.",
-    how:"Before an account is created it checks whether that venue already exists under a slightly different trading name, or sits under a group you already deal with. Before a task is written it checks whether someone has already raised it. If something similar exists it updates or links to it instead of making a second copy. It will still occasionally get one wrong, which is why every create leaves a dated note and merging two records is a one-line instruction rather than a cleanup project.",
-    change:"It is a core discipline baked into every skill, and it is the single biggest reason a shared brain stays clean enough that people keep trusting it."},
+    what:"The assistant's reach into the tools you already use. It wires in, it does not replace them. Nothing migrates.",
+    how:"Gmail, Calendar, Drive and Notion are standard, along with a Plaud recorder for meetings. Each person connects their own with their own login, so the assistant can only ever see what that person can already see, and access follows the person rather than sitting in a shared account.",
+    change:"HubSpot is the dashed one for Authi and the main thing to talk through. If you use something we have not wired yet, we add it."},
+  backend: {tag:"The single source of truth", color:"var(--grey)", title:"CRM and Task Manager",
+    what:"Four simple tables that point at each other, plus a task board. People, Companies, Deals and Interactions, then Tasks and Projects. That is genuinely it.",
+    how:"The links are the whole trick. Ask what the last thing said to someone was and the assistant finds the person, finds their company, finds the deals attached, and finds every interaction logged against them. Everything it learns lands here, structured and linked, so a meeting note attaches to the contact and the deal and spawns the follow-up tasks on its own.",
+    change:"The back end is swappable. We build on Notion because it is fastest and most capable, and because AI is very good at reading and writing it, but the same assistant can run on HubSpot or another CRM if that is where the team lives. The brain is the front end, the CRM is just the store behind it. For Authi that is the main open question and the reason a session is worth more than another document."},
   comment: {tag:"How it is wired", color:"var(--coral)", title:"Auto comment logging",
     what:"An automatic audit trail. Every time the assistant creates or changes something, it leaves a dated, signed note on that record.",
-    how:"Nothing changes silently. Anyone on the team can see the history of a merchant, a deal or a campaign without having to ask a colleague, or worse, ask the person who has since left.",
+    how:"Nothing changes silently. Anyone on the team can see the history of an account or a deal without having to ask a colleague, or worse, ask the person who has since left.",
     change:"On by default everywhere. It is also how you audit the AI itself: every action it took is written down, so if it gets something wrong you can see exactly where."},
+  gates: {tag:"How it is wired", color:"var(--coral)", title:"Gates and approvals",
+    what:"Human-in-the-loop checkpoints. Certain actions pause and ask before they happen.",
+    how:"We start deliberately conservative, with almost everything checked, and open the gates one at a time as the team sees the accuracy for themselves. It will not be perfect at the start. It will be close, and we fix the rest in the check-ins.",
+    change:"Per action, per seat. You decide how much rope to give it, and you can always pull one back."},
+  search: {tag:"How it is wired", color:"var(--coral)", title:"Search before create",
+    what:"No duplicates. Before creating anything, the assistant searches for an existing match first.",
+    how:"Before a record is created it checks whether that company already exists under a slightly different trading name, or sits under a group you already deal with. If something similar exists it updates or links to it instead of making a second copy.",
+    change:"It is a core discipline baked into every skill, and it is the single biggest reason a shared brain stays clean enough that people keep trusting it."},
+  draft: {tag:"How it is wired", color:"var(--coral)", title:"Draft, do not send",
+    what:"The default posture for anything that leaves the building.",
+    how:"Follow-ups and client emails are prepared as drafts for the person whose name is on them. The assistant does the filing, the first draft and the recall. Your people do the judgement, the last click and the relationship.",
+    change:"Per action, per person. Trusted internal jobs can run fully automatic. Anything a customer sees stays draft-first until you decide otherwise."},
   boundary: {tag:"How it is wired", color:"var(--coral)", title:"Privacy boundary",
-    what:"A wall between what should not mix. You run three relationships at once: the brands on Connect, the advertisers on Crowd, and the merchants hosting the network. Those rooms should not hear each other.",
-    how:"The boundary is set once with you and then enforced by the system everywhere: in search results, in briefings, and in what each seat's routines are allowed to touch. A Crowd pitch cannot quietly quote a named merchant's numbers, and a merchant conversation cannot leak what an advertiser is spending.",
-    change:"Yours to define, per role or per person, and to loosen or tighten over time. Assumption worth correcting: we have drawn the wall between the three commercial relationships. If the real sensitivity sits somewhere else, this is the block that changes first."},
-  data: {tag:"How it is wired", color:"var(--coral)", title:"Where your data sits",
-    what:"Everything runs inside Authi's own accounts. Your Google tenancy, your HubSpot portal, your Notion workspace, your Claude seats. CAIVO does not hold a copy of anything and does not sit between you and your tools.",
-    how:"Each person connects their own tools with their own login, so the assistant can only ever reach what that person could already open. The brain works with the business layer: merchants, brands, deals, meetings, campaigns and results. It has no reason to touch consumer-level interaction data and it does not, because that stays in your portal where it belongs. Anything the assistant changes leaves a dated note, so there is a full record of what it did and when.",
-    change:"Permissions are revocable from one settings screen, per person and per tool. If you want a specific mailbox, folder or record type walled off entirely, that is a setting rather than a rebuild. Your CTO can read exactly what each connection is scoped to, because it is written in the repo in plain text."},
+    what:"A wall between what should not mix. Internal discussion, commercials and one relationship's detail never leak into another.",
+    how:"Set once with you and then enforced by the system everywhere: in search results, in briefings, and in what each seat's routines are allowed to touch.",
+    change:"Yours to define, per role or per person, and to loosen or tighten over time. Where the wall actually needs to sit for Authi is one for the session."},
   repo: {tag:"Where it lives", color:"var(--purple)", title:"It all lives in one repo",
     what:"The whole assistant is one version-controlled repository: the instructions, every skill, every routine and the config, all as readable files.",
     how:"Nothing is hidden in a black-box app. Every change is tracked, reviewable and reversible. Deploying an update is one step: merge the change and it is live for the whole team.",
-    change:"Everything runs in Authi's own accounts, not ours. Permissions are revocable from one settings screen and exporting is just taking the files. If CAIVO disappeared the day after we finished, it would keep running. It is an asset you own, not a subscription you rent."},
+    change:"Everything runs in your own accounts, not ours. Permissions are revocable from one settings screen and exporting is just taking the files. It is an asset you own, not a subscription you rent."},
   lifecycle: {tag:"How we would build it", color:"var(--teal)", title:"Start to finish",
     what:"A clear path from first conversation to a team using it every day, in small increments rather than everything at once.",
-    how:"1. Discovery: one session on how a Connect deal, a Crowd campaign and a merchant sign-up each actually move end to end, and where the time goes today. 2. Clone a proven build: we re-skin one already running rather than starting from scratch. 3. Wire HubSpot first: the connection, the field map, and the rule that HubSpot stays the source of truth. 4. Guided setup, 60 to 90 minutes, seat by seat, all in your accounts. 5. Two check-ins a fortnight apart, with support the whole way through, fixing what the team actually hits and opening the gates as trust is earned.",
-    change:"Because every build clones the last, each one is faster than the one before. Yours would stand on the shoulders of the builds already running, including a full retail team."}
+    how:"It starts with a session, and that is the honest answer to most of what is dashed on this page. We would sit down with the team, work out who uses it and what is actually worth capturing, and only then decide what Authi's version looks like. After that it is a well-worn path: clone a build already running rather than starting blank, put it through the review swarm, 60 to 90 minutes of guided setup seat by seat, then training and check-ins.",
+    change:"Because every build clones the last, each one is faster than the one before, and most of what you see here is already built rather than promised. What we would be designing together is the thin layer on top."}
 };
 
 const scrim = document.getElementById('scrim');
